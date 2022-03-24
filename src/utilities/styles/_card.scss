@@ -1,0 +1,72 @@
+@import '../references/index';
+
+* {
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    &::-webkit-scrollbar:hover {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background-color: #DDDBDD;
+        // box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background-color: #757575;
+        border-radius: 5px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        width: 50px;
+        background-color: #999999;
+    }
+
+    .rge-skeleton {
+        background-color: #e0e0e0;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        background-color: #DDDBDD;
+
+        &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(90deg,
+                    rgba(#fff, 0) 0,
+                    rgba(#fff, 0.2) 20%,
+                    rgba(#fff, 0.5) 60%,
+                    rgba(#fff, 0));
+            animation: skeleton-background-animation 5s infinite;
+            content: '';
+        }
+
+        @keyframes skeleton-background-animation {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+    }
+}
+
+.un-styled-button,
+.un-styled-button:hover,
+.un-styled-button:active,
+.un-styled-button:focus {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0;
+}

@@ -1,0 +1,103 @@
+@mixin rge-xs {
+    @media (max-width: 575.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin rge-sm {
+    @media (min-width: 575.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin rge-md {
+    @media (min-width: 767.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin rge-lg {
+    @media (min-width: 991.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin rge-xl {
+    @media (min-width: 1199.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin rge-pre-xs {
+    @media (max-width: 575.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin rge-pre-sm {
+    @media (max-width: 575.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin rge-pre-md {
+    @media (max-width: 767.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin rge-pre-lg {
+    @media (max-width: 991.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin rge-pre-xl {
+    @media (max-width: 1199.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin rge-size($property, $web-value, $mobile-value) {
+    @include rge-xs {
+        #{$property}: $mobile-value;
+    }
+
+    @include rge-sm {
+        #{$property}: (2*$mobile-value + $web-value)/3;
+    }
+
+    @include rge-md {
+        #{$property}: ($mobile-value + $web-value)/2;
+    }
+
+    @include rge-lg {
+        #{$property}: ($mobile-value + 2*$web-value)/3;
+    }
+
+    @include rge-xl {
+        #{$property}: $web-value;
+    }
+}
+
+;
