@@ -3,14 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ReduxState } from '../interface';
 import { connect, ConnectedProps } from 'react-redux';
 import Header from '../utilities/component/header/header.index';
-
+import Landing from './landing/landing.index';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
 const Rge: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     return (
         <Router>
             <Header />
             <Switch>
                 <Route path="*">
-                    <h1>سلام دنیا</h1>
+                    <Landing />
                 </Route>
             </Switch>
         </Router>
