@@ -1,17 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { AuthStatus, ReduxState } from '../interface';
+import { ReduxState } from '../interface';
 import { connect, ConnectedProps } from 'react-redux';
+import Header from '../utilities/component/header/header.index';
 
 const Rge: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
-    // useEffect(() => {
-    //     RgeInit(props.dispatch);
-    // }, []);
     return (
         <Router>
+            <Header />
             <Switch>
                 <Route path="*">
-                    <h1>Hello world!</h1>
                     <h1>سلام دنیا</h1>
                 </Route>
             </Switch>

@@ -1,0 +1,56 @@
+@import "src/utilities/references/index";
+
+.rge-header {
+  width: 100%;
+  height: 70px;
+  background-color: #404040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  > div {
+    max-width: 960px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    span {
+      flex: 1;
+    }
+    h1{
+      font-size: 30px;
+      font-weight: 700;
+      color: gold;
+    }
+    >a{
+      cursor: pointer;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h4{
+        font-size: 14px;
+        font-weight: 400;
+        color: #ffffff;
+        transition: color 0.3s ease-in-out;
+      }
+      transition: background-color 0.3s ease-in-out;
+      &:hover{
+        background-color: gold;
+        h4{
+          color: #0a58ca;
+        }
+      }
+      &.active{
+        background-color: gold;
+        h4{
+          color: #0a58ca;
+        }
+      }
+    }
+  }
+
+}
