@@ -6,6 +6,7 @@ import Header from '../utilities/component/header/header.index';
 import Landing from './landing/landing.index';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import 'swiper/css/effect-coverflow';
 const Rge: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     return (
         <Router>

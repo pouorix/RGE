@@ -7,10 +7,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
 
   > div {
-    max-width: 960px;
+    max-width: 1120px;
     display: flex;
     align-items: center;
     justify-content: center;
