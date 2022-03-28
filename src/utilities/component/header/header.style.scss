@@ -13,7 +13,7 @@
 
 
   > div {
-    max-width: 1120px;
+    max-width: $maxWidth;
     display: flex;
     align-items: center;
     justify-content: center;

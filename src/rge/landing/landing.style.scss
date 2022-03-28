@@ -4,6 +4,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 .rge-landing {
   .my-slider {
     width: 100%;
@@ -202,7 +203,7 @@ html {
 
     .container {
       width: 100%;
-      max-width: 1120px;
+      max-width: $maxWidth;
       display: flex;
       flex-direction: column;
       margin: auto;
@@ -277,7 +278,7 @@ html {
     }
 
     .container {
-      max-width: 1120px;
+      max-width: $maxWidth;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -290,7 +291,7 @@ html {
         justify-content: center;
         flex: 1;
 
-        >* {
+        > * {
           font-weight: 700;
           color: #ffffff;
         }
@@ -303,6 +304,48 @@ html {
           font-size: 18px;
           //margin-top: px;
         }
+      }
+    }
+  }
+
+  .history {
+    max-width: $maxWidth;
+    margin: 64px auto;
+
+    h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #f4f4f4;
+      border-bottom: solid 1px rgba(gray, 0.3);
+      padding-bottom: 16px;
+    }
+
+    .history-content {
+      display: flex;
+      align-items: center;
+      margin: 16px 0;
+
+      .list {
+        margin-left: 12px;
+
+        img {
+          width: 300px;
+          height: 150px;
+          object-fit: cover;
+          margin-bottom: 12px;
+          box-shadow: 0 2px 15px rgb(0, 0, 0 / 10%);
+          transition: all ease-in-out 0.3s;
+          cursor: pointer;
+          border-radius: 6px;
+          &:hover{
+            box-shadow: 0 2px 15px gold;
+          }
+        }
+      }
+      .my-content{
+        display: flex;
+        align-items: center;
+
       }
     }
   }
