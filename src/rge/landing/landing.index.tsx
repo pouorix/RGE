@@ -191,7 +191,10 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                     </div>
                 </div>
             </div>
-            <div className="credentials">
+            <div
+                // style={{ backgroundImage: 'http://79.175.134.143:2000/static/homea/img/port5.jpg' }}
+                className="credentials"
+            >
                 <h2>آمار و اطلاعات</h2>
                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
                 <div className="container">

@@ -7,6 +7,7 @@ import Landing from './landing/landing.index';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/effect-coverflow';
+import Footer from '../utilities/component/footer/footer.index';
 const Rge: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     return (
         <Router>
@@ -16,6 +17,7 @@ const Rge: React.FC<ConnectedProps<typeof connector>> = function (props: Connect
                     <Landing />
                 </Route>
             </Switch>
+            <Footer />
         </Router>
     );
 };
