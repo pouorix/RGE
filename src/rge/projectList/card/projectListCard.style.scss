@@ -1,0 +1,57 @@
+@import "src/utilities/references/index";
+
+.rge-project-list-card {
+  min-width: 300px;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  background-color: #707070;
+  padding: 16px 16px 0;
+  border-radius: 5px;
+
+  img {
+    min-height: 280px;
+    max-height: 280px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .info {
+    min-height: 120px;
+    max-height: 120px;
+    width: 100%;
+    height: 100%;
+    margin-top: 12px;
+    h4{
+      color: gold;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    p{
+      color: gold;
+      font-size: 12px;
+      margin-top: 8px;
+      font-weight: 400;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-bottom: 24px;
+    }
+    .more{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: solid 1px rgba(white,0.3);
+      color: gold;
+      padding-top: 8px;
+      cursor: pointer;
+      transition: color 0.3s ease-in-out;
+      font-size: 14px;
+      &:hover{
+        color: white;
+      }
+    }
+  }
+}

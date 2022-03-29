@@ -2,30 +2,30 @@ import React, { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { ReduxState } from '../../../interface';
 import './header.style.scss';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { RoutePath } from '../../../data';
 const Header: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     return (
         <div className="rge-header">
             <div className="content">
-                <h1>RGE LIGHTING DESIGN</h1>
+                <Link to={'/'}>RGE LIGHTING DESIGN</Link>
                 <span />
-                <NavLink exact to="/" activeClassName="active">
+                <NavLink className="item" exact to="/" activeClassName="active">
                     <h4>خانه</h4>
                 </NavLink>
-                <a href="/#about">
+                <a className="item" href="/#about">
                     <h4>درباره ما</h4>
                 </a>
-                <a href="/#projects">
+                <a className="item" href="/#projects">
                     <h4>پروژه ها</h4>
                 </a>
-                <a href="/#award">
+                <a className="item" href="/#award">
                     <h4>جایزه ها</h4>
                 </a>
-                <NavLink to={RoutePath.blog} activeClassName="active">
+                <NavLink className="item" to={RoutePath.blog} activeClassName="active">
                     <h4>بلاگ</h4>
                 </NavLink>
-                <a href="/#contact">
+                <a className="item" href="/#contact">
                     <h4>تماس با ما</h4>
                 </a>
             </div>

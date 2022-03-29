@@ -9,6 +9,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, EffectCoverflow } from 'swiper';
 import Mapir from 'mapir-react-component';
 import 'mapir-react-component/dist/index.css';
+import { Link } from 'react-router-dom';
+import { RoutePath } from '../../data';
 const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     const Map = Mapir.setToken({
         transformRequest: (url: string) => {
@@ -63,34 +65,34 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                 </SwiperSlide>
             </Swiper>
             <div className="categories">
-                <div className="item">
+                <Link to={RoutePath.projectList(1)} className="item">
                     <img src={imageOne} alt="دسته بندی" />
                     <div className="text">
                         <h4>پروژه نورپردازی نما</h4>
                         <h6>لورم ایپسوم متن ساختگی با</h6>
                     </div>
-                </div>
-                <div className="item">
+                </Link>
+                <Link to={RoutePath.projectList(2)} className="item">
                     <img src={imageTwo} alt="دسته بندی" />
                     <div className="text">
                         <h4>پروژه نورپردازی نما</h4>
                         <h6>لورم ایپسوم متن ساختگی با</h6>
                     </div>
-                </div>
-                <div className="item">
+                </Link>
+                <Link to={RoutePath.projectList(3)} className="item">
                     <img src={imageThree} alt="دسته بندی" />
                     <div className="text">
                         <h4>پروژه نورپردازی نما</h4>
                         <h6>لورم ایپسوم متن ساختگی با</h6>
                     </div>
-                </div>
-                <div className="item">
+                </Link>
+                <Link to={RoutePath.projectList(4)} className="item">
                     <img src={imageOne} alt="دسته بندی" />
                     <div className="text">
                         <h4>پروژه نورپردازی نما</h4>
                         <h6>لورم ایپسوم متن ساختگی با</h6>
                     </div>
-                </div>
+                </Link>
             </div>
             <div id="award" className="awards">
                 <div className="title">
