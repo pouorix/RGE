@@ -23,7 +23,9 @@
       flex: 1;
     }
     h1{
-      font-size: 30px;
+        @include rge-size(font-size,30px,12px);
+      //text-align: center;
+      //font-size: 30px;
       font-weight: 700;
       color: gold;
     }
@@ -35,7 +37,8 @@
       align-items: center;
       justify-content: center;
       h4{
-        font-size: 14px;
+          @include rge-size(font-size,14px,10px);
+        //font-size: 14px;
         font-weight: 400;
         color: #ffffff;
         transition: color 0.3s ease-in-out;

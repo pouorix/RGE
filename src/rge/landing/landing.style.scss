@@ -23,17 +23,21 @@ html {
 
     .text {
       position: absolute;
-      right: 64px;
-      bottom: 64px;
+      @include rge-size(right, 64px, 24px);
+      @include rge-size(bottom, 64px, 24px);
+      //right: 64px;
+      //bottom: 64px;
 
       h2 {
-        font-size: 48px;
+        @include rge-size(font-size, 48px, 24px);
+        //font-size: 48px;
         font-weight: 700;
         color: #ffffff;
       }
 
       p {
-        font-size: 24px;
+        @include rge-size(font-size, 24px, 16px);
+        //font-size: 24px;
         font-weight: 400;
         color: #ffffff;
         margin-top: 12px;
@@ -47,6 +51,11 @@ html {
     max-width: 1800px;
     margin: 32px auto;
     display: flex;
+    flex-direction: row;
+
+    @include rge-pre-lg {
+      flex-direction: column;
+    }
     align-items: center;
 
     .item {
@@ -63,6 +72,9 @@ html {
       cursor: pointer;
       border-radius: 6px;
       overflow: hidden;
+      @include rge-pre-lg {
+        margin-top: 32px;
+      }
 
       .text {
         transition: padding-bottom ease-in-out 0.3s;
@@ -92,14 +104,16 @@ html {
         margin-left: 16px;
 
         h4 {
-          font-size: 24px;
+          @include rge-size(font-size, 24px, 18px);
+          //font-size: 24px;
           font-weight: 600;
           color: #ffffff;
           margin-bottom: 16px;
         }
 
         h6 {
-          font-size: 16px;
+          @include rge-size(font-size, 16px, 14px);
+          //font-size: 16px;
           font-weight: 400;
           color: #aaaaaa;
         }
@@ -139,13 +153,16 @@ html {
       h2 {
         color: #000000;
         opacity: 0.08;
-        font-size: 52px;
+        @include rge-size(font-size, 52px, 32px);
+        //font-size: 52px;
         font-weight: 700;
-        margin-bottom: -40px;
+        @include rge-size(margin-bottom, -40px, -20px);
+        //margin-bottom: -40px;
       }
 
       h4 {
-        font-size: 32px;
+        @include rge-size(font-size, 32px, 24px);
+        //font-size: 32px;
         font-weight: 700;
         color: #ffffff;
       }
@@ -175,18 +192,22 @@ html {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-bottom: 32px;
+      @include rge-size(margin-bottom, 32px, 24px);
+      //margin-bottom: 32px;
 
       h2 {
         color: #000000;
         opacity: 0.08;
-        font-size: 52px;
+        @include rge-size(font-size, 52px, 32px);
+        //font-size: 52px;
         font-weight: 700;
-        margin-bottom: -40px;
+        @include rge-size(margin-bottom, -40px, -20px);
+        //margin-bottom: -40px;
       }
 
       h4 {
-        font-size: 32px;
+        @include rge-size(font-size, 32px, 24px);
+        //font-size: 32px;
         font-weight: 700;
         color: #ffffff;
       }
@@ -194,7 +215,8 @@ html {
 
     > p {
       font-weight: 400;
-      font-size: 18px;
+      @include rge-size(font-size, 18px, 14px);
+      //font-size: 18px;
       color: #aaaaaa;
       width: 100%;
       text-align: center;
@@ -207,17 +229,32 @@ html {
       display: flex;
       flex-direction: column;
       margin: auto;
-      height: 640px;
+      @include rge-lg {
+        height: 640px;
+      }
+
 
       .my-row {
-        display: flex;
         align-items: center;
         width: 100%;
         height: 100%;
-        margin-right: -16px;
-        margin-bottom: 16px;
+        @include rge-lg {
+          display: flex;
+          margin-right: -16px;
+          margin-bottom: 16px;
+          flex-direction: row;
+        }
+
+        @include rge-pre-lg {
+          flex-direction: column;
+        }
 
         .item {
+          @include rge-pre-lg {
+            margin-top: 16px;
+            height: 200px;
+            width: 100%;
+          }
           position: relative;
           height: 100%;
           flex: 1;
@@ -225,7 +262,10 @@ html {
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          margin: 0 16px;
+          @include rge-lg {
+            margin: 0 16px;
+          }
+
 
           img {
             position: absolute;
@@ -238,10 +278,17 @@ html {
           }
 
           h4 {
-            font-size: 24px;
+            @include rge-size(font-size, 24px, 16px);
+            //font-size: 24px;
             font-weight: 700;
             color: #ffffff;
-            padding-bottom: 128px;
+            @include rge-pre-lg {
+              padding-top: 16px;
+            }
+            @include rge-lg {
+              padding-bottom: 128px;
+            }
+
             transition: all 0.4s ease-in-out;
           }
 
@@ -268,16 +315,20 @@ html {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    max-height: 500px;
+    //max-height: 500px;
+    @include rge-size(max-height, 500px, 400px);
     padding: 100px 0;
 
     h2 {
-      font-size: 32px;
+      @include rge-size(font-size, 32px, 20px);
+      //font-size: 32px;
       font-weight: 700;
       color: #f4f4f4;
     }
 
     p {
+      @include rge-size(font-size, 18px, 14px);
+      text-align: center;
       color: aliceblue;
       margin: 16px 0 64px;
       font-weight: 400;
@@ -304,10 +355,13 @@ html {
         }
 
         h3 {
-          font-size: 28px;
+          @include rge-size(font-size, 28px, 18px);
+          //font-size: 28px;
         }
 
         h5 {
+          text-align: center;
+          @include rge-size(font-size, 18px, 14px);
           font-size: 18px;
           //margin-top: px;
         }
@@ -316,12 +370,14 @@ html {
   }
 
   .history {
-    padding: 0 64px;
+    @include rge-size(padding-right, 64px, 16px);
+    @include rge-size(padding-left, 64px, 16px);
     //max-width: $maxWidth;
     margin: 64px auto;
 
     h2 {
-      font-size: 32px;
+      @include rge-size(font-size, 32px, 20px);
+      //font-size: 32px;
       font-weight: 700;
       color: #f4f4f4;
       border-bottom: solid 1px rgba(gray, 0.3);
@@ -330,14 +386,27 @@ html {
 
     .history-content {
       display: flex;
+      @include rge-pre-lg {
+        flex-direction: column;
+      }
       align-items: center;
       margin: 32px 0;
 
       .list {
-        margin-left: 64px;
+        @include rge-lg {
+          margin-left: 64px;
+        }
+        @include rge-pre-lg {
+          margin-bottom: 64px;
+        }
+
 
         img {
-          width: 300px;
+          width: 100%;
+          @include rge-lg {
+            max-width: 300px;
+          }
+
           height: 150px;
           object-fit: cover;
           margin-bottom: 12px;
@@ -354,26 +423,40 @@ html {
 
       .my-content {
         display: flex;
+        @include rge-pre-lg {
+          flex-direction: column;
+        }
         align-items: center;
 
         img {
-          width: 600px;
+          width: 100%;
+          max-width: 600px;
           height: 400px;
           object-fit: cover;
           border-radius: 5px;
         }
 
         .text {
-          margin-right: 28px;
+          @include rge-lg {
+            margin-right: 28px;
+          }
+          @include rge-pre-lg {
+            margin-top: 32px;
+          }
+
 
           h4 {
+            text-align: center;
             margin-bottom: 16px;
-            font-size: 18px;
+             @include rge-size(font-size,18px,16px);
+            //font-size: 18px;
             color: #d0d0d0;
           }
 
           p {
-            font-size: 16px;
+            text-align: center;
+             @include rge-size(font-size,16px,14px);
+            //font-size: 16px;
             color: #adadad;
           }
         }
@@ -382,12 +465,16 @@ html {
   }
 
   .blog {
-    padding: 0 64px;
+    @include rge-size(padding-right, 64px, 16px);
+    @include rge-size(padding-left, 64px, 16px);
+
+    //padding: 0 64px;
     //max-width: $maxWidth;
     margin: 128px auto;
 
     h2 {
-      font-size: 32px;
+      @include rge-size(font-size, 32px, 20px);
+      //font-size: 32px;
       font-weight: 700;
       color: $white1;
       border-bottom: solid 1px rgba(gray, 0.3);
@@ -398,6 +485,9 @@ html {
       display: flex;
       margin-right: -32px;
       margin-top: -32px;
+      @include rge-pre-lg {
+        flex-direction: column;
+      }
 
       .my-column {
         margin-top: 32px;
@@ -450,7 +540,7 @@ html {
     margin: 64px auto;
     background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url("http://79.175.134.143:2000/static/homea/img/cta-bg.jpg") fixed center center;
     background-size: cover;
-    padding: 120px 0;
+    padding: 120px 16px;
 
     h4 {
       max-width: $maxWidth;
@@ -471,8 +561,10 @@ html {
   }
 
   .contact {
-    margin-top: 128px;
-    padding: 64px;
+    @include rge-size(margin-top,128px,-32px);
+    //margin-top: 128px;
+    @include rge-size(padding,64px,16px);
+    //padding: 64px;
 
     .title {
       width: 100%;
@@ -485,13 +577,16 @@ html {
       h2 {
         color: #000000;
         opacity: 0.08;
-        font-size: 52px;
+        @include rge-size(font-size, 52px, 32px);
+        //font-size: 52px;
         font-weight: 700;
-        margin-bottom: -40px;
+        @include rge-size(margin-bottom, -40px, -20px);
+        //margin-bottom: -40px;
       }
 
       h4 {
-        font-size: 32px;
+        @include rge-size(font-size, 32px, 24px);
+        //font-size: 32px;
         font-weight: 700;
         color: #ffffff;
       }
@@ -499,7 +594,8 @@ html {
 
     > p {
       font-weight: 400;
-      font-size: 18px;
+      @include rge-size(font-size, 18px, 14px);
+      //font-size: 18px;
       color: #aaaaaa;
       width: 100%;
       text-align: center;
@@ -509,7 +605,17 @@ html {
     .my-box {
       display: flex;
       align-items: center;
-      margin-right: -32px;
+      @include rge-lg{
+        margin-right: -32px;
+      }
+
+      @include rge-pre-lg{
+        flex-direction: column;
+        >div{
+          margin-top: 16px;
+          width: 100%;
+        }
+      }
 
       .item {
         flex: 1;
@@ -523,7 +629,10 @@ html {
         align-items: center;
         justify-content: center;
         padding: 32px 16px;
-        margin-right: 32px;
+        @include rge-lg{
+           margin-right: 32px;
+        }
+
         border-radius: 5px;
         background-color: #4b4b4b;
 
@@ -559,8 +668,15 @@ html {
       width: 100%;
       display: flex;
       align-items: center;
-      height: 500px;
+      @include rge-lg{
+         height: 500px;
+      }
+
       margin-top: 32px;
+      @include rge-pre-lg{
+        flex-direction: column;
+      }
+
       .form {
         width: 100%;
         max-width: 800px;
@@ -573,7 +689,7 @@ html {
         background-color: #4b4b4b;
         height: 100%;
 
-        input,textarea {
+        input, textarea {
           width: 100%;
           border-radius: 5px;
           box-shadow: none;
@@ -587,16 +703,19 @@ html {
           background-clip: padding-box;
           border: none;
           display: block;
-          outline:none;
-          &:focus{
+          outline: none;
+
+          &:focus {
             border: none;
             background-color: white;
           }
         }
-        textarea{
+
+        textarea {
           width: 100%;
           height: 100px;
         }
+
         .my-row {
           width: 100%;
           display: flex;
@@ -608,18 +727,21 @@ html {
           }
 
         }
-         >:nth-child(2) {
-            margin: 32px 0;
-          }
 
-          > button {
-            margin-top: 32px;
-          }
+        > :nth-child(2) {
+          margin: 32px 0;
+        }
+
+        > button {
+          margin-top: 32px;
+        }
       }
-      .map{
+
+      .map {
         width: 100%;
         height: 100%;
-        >*{
+
+        > * {
           height: 100% !important;
           width: 100% !important;
         }

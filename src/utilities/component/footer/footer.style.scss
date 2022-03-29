@@ -7,18 +7,29 @@
   .top-footer{
     //margin-right: -64px;
     display: flex;
+    @include rge-pre-md{
+      flex-direction: column;
+    }
     align-items: center;
     justify-content: flex-start;
     padding-bottom: 32px;
     .my-column{
-      margin-right: 64px;
+      @include rge-md{
+         margin-right: 64px;
+      }
+      @include rge-pre-md{
+        margin-bottom: 32px;
+      }
+
       h4{
-        font-size: 22px;
+         @include rge-size(font-size,22px,16px);
+        //font-size: 22px;
         color: $white2;
         font-weight: 600;
       }
       ul{
-        font-size: 16px;
+         @include rge-size(font-size,16px,12px);
+        //font-size: 16px;
         color: $white2;
         font-weight: 400;
         cursor: pointer;
@@ -38,11 +49,13 @@
     border-top: solid 1px rgba(#ffffff,0.3);
     padding: 32px 0;
     h5{
-      font-size: 16px;
+      @include rge-size(font-size,16px,14px);
+      //font-size: 16px;
       color: $white2;
     }
     h6{
-      font-size: 14px;
+      margin-top: 8px;
+      @include rge-size(font-size,14px,12px);
       color: $white3;
     }
   }
