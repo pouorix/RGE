@@ -12,6 +12,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Bars } from 'react-loader-spinner';
 import { get, responseValidator } from '../../scripts/api';
+import { toast } from 'react-toastify';
 const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     AOS.init();
     // You can also pass an optional settings object
@@ -90,7 +91,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                 if (res[6].data) setBlog(res[6].data);
                 console.log(res);
                 setLoading(false);
-            }
+            } else toast.error('خطایی رخ داده است.');
         });
     }, []);
     return loading ? (

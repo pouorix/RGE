@@ -12,4 +12,5 @@ export const __API = {
         history: '/user/history/',
         blog: '/user/blog/',
     },
+    categoryProjects: '/user/projectwithcategory/',
 };

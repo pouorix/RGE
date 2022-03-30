@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { ReduxState } from '../../../interface';
+import { RecentProject, ReduxState } from '../../../interface';
 import './projectListCard.style.scss';
 import { Link, useParams } from 'react-router-dom';
 import imageOne from '../../../assets/images/1.jpg';
 import { RoutePath } from '../../../data';
 
-const ProjectListCard: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
+const ProjectListCard: React.FC<{ data: RecentProject }> = function (props: { data: RecentProject }) {
     return (
         <div className="rge-project-list-card">
-            <img src={imageOne} alt="projects" />
+            <img src={props.data.thumbnailimg} alt="projects" />
             <div className="info">
-                <h4>لورم ایمپسوم</h4>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                <Link to={RoutePath.projectDetail(1)} className="more">
+                <h4>{props.data.title}</h4>
+                <p>{props.data.firsttxt}</p>
+                <Link to={RoutePath.projectDetail(props.data.id)} className="more">
                     توضیحات بیشتر
                 </Link>
             </div>
@@ -21,10 +21,4 @@ const ProjectListCard: React.FC<ConnectedProps<typeof connector>> = function (pr
     );
 };
 
-const mapStateToProps = (state: ReduxState) => ({
-    isAuth: state.authStatus,
-    userData: state.userData,
-});
-
-const connector = connect(mapStateToProps);
-export default connector(ProjectListCard);
+export default ProjectListCard;
