@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { Config, ReduxState } from '../../interface';
+import { Award, CategoryList, Config, RecentProject, ReduxState, TopBanner } from '../../interface';
 import './landing.style.scss';
 import imageOne from '../../assets/images/1.jpg';
 import imageTwo from '../../assets/images/2.jpg';
@@ -55,19 +55,34 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
 
     const [loading, setLoading] = useState<boolean>(true);
     const [data, setData] = useState<Config>();
-
+    const [topBanner, setTopBanner] = useState<TopBanner[]>();
+    const [categoryList, setCategoryList] = useState<CategoryList[]>();
+    const [award, setAward] = useState<Award[]>();
+    const [recentProject, setRecentProject] = useState<RecentProject[]>();
     useEffect(() => {
-        // window.onbeforeunload = function () {
-        //     console.log('sdadasd');
-        //     window.scrollTo(0, 0);
-        // };
-
-        get<Config>(API.config).then((res) => {
-            if (responseValidator(res.status) && res.data) {
+        const temp = [
+            get<any>(API.landing.config),
+            get<any>(API.landing.topBanner),
+            get<any>(API.landing.categoryList),
+            get<any>(API.landing.award),
+            get<any>(API.landing.recentProject),
+        ];
+        Promise.all(temp).then((res) => {
+            if (
+                responseValidator(res[0].status) &&
+                responseValidator(res[1].status) &&
+                responseValidator(res[2].status) &&
+                responseValidator(res[3].status) &&
+                responseValidator(res[4].status)
+            ) {
+                if (res[0].data) setData(res[0].data);
+                if (res[1].data) setTopBanner(res[1].data);
+                if (res[2].data) setCategoryList(res[2].data);
+                if (res[3].data) setAward(res[3].data);
+                if (res[4].data) setRecentProject(res[4].data);
+                console.log(res);
                 setLoading(false);
-                console.log(res.data);
-                setData(res.data);
-            } else toast.error('خطایی رخ داده است');
+            }
         });
     }, []);
     return loading ? (
@@ -86,63 +101,28 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                 slidesPerView={1}
                 modules={[Autoplay, EffectFade]}
             >
-                <SwiperSlide>
-                    <div className="my-slider">
-                        <img src={imageOne} alt="imageOne" />
-                        <div className="text">
-                            <h2>لورم ایپسوم متن</h2>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                {topBanner?.map((item, index) => (
+                    <SwiperSlide key={index}>
+                        <div className="my-slider">
+                            <img src={item.imageurl} alt="imageOne" />
+                            <div className="text">
+                                <h2>{item.firstTxt}</h2>
+                                <p>{item.secondTxt}</p>
+                            </div>
                         </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="my-slider">
-                        <img src={imageTwo} alt="imageOne" />
-                        <div className="text">
-                            <h2>لورم ایپسوم متن</h2>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="my-slider">
-                        <img src={imageThree} alt="imageOne" />
-                        <div className="text">
-                            <h2>لورم ایپسوم متن</h2>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
-                        </div>
-                    </div>
-                </SwiperSlide>
+                    </SwiperSlide>
+                ))}
             </Swiper>
             <div className="categories">
-                <Link data-aos="fade" to={RoutePath.projectList(1)} className="item">
-                    <img src={imageOne} alt="دسته بندی" />
-                    <div className="text">
-                        <h4>پروژه نورپردازی نما</h4>
-                        <h6>لورم ایپسوم متن ساختگی با</h6>
-                    </div>
-                </Link>
-                <Link data-aos="fade" to={RoutePath.projectList(2)} className="item">
-                    <img src={imageTwo} alt="دسته بندی" />
-                    <div className="text">
-                        <h4>پروژه نورپردازی نما</h4>
-                        <h6>لورم ایپسوم متن ساختگی با</h6>
-                    </div>
-                </Link>
-                <Link data-aos="fade" to={RoutePath.projectList(3)} className="item">
-                    <img src={imageThree} alt="دسته بندی" />
-                    <div className="text">
-                        <h4>پروژه نورپردازی نما</h4>
-                        <h6>لورم ایپسوم متن ساختگی با</h6>
-                    </div>
-                </Link>
-                <Link data-aos="fade" to={RoutePath.projectList(4)} className="item">
-                    <img src={imageOne} alt="دسته بندی" />
-                    <div className="text">
-                        <h4>پروژه نورپردازی نما</h4>
-                        <h6>لورم ایپسوم متن ساختگی با</h6>
-                    </div>
-                </Link>
+                {categoryList?.map((item, index) => (
+                    <Link key={index} data-aos="fade" to={RoutePath.projectList(1)} className="item">
+                        <img src={item.imageurl} alt="دسته بندی" />
+                        <div className="text">
+                            <h6>{item.title}</h6>
+                            {/*<h6>لورم ایپسوم متن ساختگی با</h6>*/}
+                        </div>
+                    </Link>
+                ))}
             </div>
             <div data-aos="fade" id="award" className="awards">
                 <div className="title">
@@ -179,75 +159,84 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                             },
                         }}
                     >
-                        <SwiperSlide>
-                            <img src={imageOne} alt="award" />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={imageTwo} alt="award" />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={imageThree} alt="award" />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={imageOne} alt="award" />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={imageTwo} alt="award" />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={imageThree} alt="award" />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={imageOne} alt="award" />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={imageTwo} alt="award" />
-                        </SwiperSlide>
+                        {award?.map((item, index) => (
+                            <SwiperSlide key={index}>
+                                <img src={item.imageurl} alt="award" />
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
                 </div>
             </div>
-            <div id="projects" className="projects">
-                <div data-aos="fade" className="title">
-                    <h2>پروژه های اخیر</h2>
-                    <h4>پروژه های اخیر</h4>
-                </div>
-                <p data-aos="fade">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
-                <div className="container">
-                    <div className="my-row">
-                        <div data-aos="fade" className="item">
-                            <img src={imageOne} alt="projects" />
-                            <h4>مجتمع تجاری کوروش</h4>
+            {recentProject &&
+                recentProject[0] &&
+                recentProject[1] &&
+                recentProject[2] &&
+                recentProject[3] &&
+                recentProject[4] &&
+                recentProject[5] && (
+                    <div id="projects" className="projects">
+                        <div data-aos="fade" className="title">
+                            <h2>پروژه های اخیر</h2>
+                            <h4>پروژه های اخیر</h4>
                         </div>
-                        <div data-aos="fade" className="item">
-                            <img src={imageOne} alt="projects" />
-                            <h4>مجتمع تجاری کوروش</h4>
-                        </div>
-                        <div data-aos="fade" className="item">
-                            <img src={imageOne} alt="projects" />
-                            <h4>مجتمع تجاری کوروش</h4>
+                        <p data-aos="fade">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                        <div className="container">
+                            <div className="my-row">
+                                <Link
+                                    to={RoutePath.projectDetail(recentProject[0].id)}
+                                    data-aos="fade"
+                                    className="item"
+                                >
+                                    <img src={recentProject[0].thumbnailimg} alt="projects" />
+                                    <h4>{recentProject[0].title}</h4>
+                                </Link>
+                                <Link
+                                    to={RoutePath.projectDetail(recentProject[1].id)}
+                                    data-aos="fade"
+                                    className="item"
+                                >
+                                    <img src={recentProject[1].thumbnailimg} alt="projects" />
+                                    <h4>{recentProject[1].title}</h4>
+                                </Link>
+                                <Link
+                                    to={RoutePath.projectDetail(recentProject[2].id)}
+                                    data-aos="fade"
+                                    className="item"
+                                >
+                                    <img src={recentProject[2].thumbnailimg} alt="projects" />
+                                    <h4>{recentProject[2].title}</h4>
+                                </Link>
+                            </div>
+                            <div className="my-row">
+                                <Link
+                                    to={RoutePath.projectDetail(recentProject[3].id)}
+                                    data-aos="fade"
+                                    className="item"
+                                >
+                                    <img src={recentProject[3].thumbnailimg} alt="projects" />
+                                    <h4>{recentProject[3].title}</h4>
+                                </Link>
+                                <Link
+                                    to={RoutePath.projectDetail(recentProject[4].id)}
+                                    data-aos="fade"
+                                    className="item"
+                                >
+                                    <img src={recentProject[4].thumbnailimg} alt="projects" />
+                                    <h4>{recentProject[4].title}</h4>
+                                </Link>
+                                <Link
+                                    to={RoutePath.projectDetail(recentProject[5].id)}
+                                    data-aos="fade"
+                                    className="item"
+                                >
+                                    <img src={recentProject[5].thumbnailimg} alt="projects" />
+                                    <h4>{recentProject[5].title}</h4>
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                    <div className="my-row">
-                        <div data-aos="fade" className="item">
-                            <img src={imageOne} alt="projects" />
-                            <h4>مجتمع تجاری کوروش</h4>
-                        </div>
-                        <div data-aos="fade" className="item">
-                            <img src={imageOne} alt="projects" />
-                            <h4>مجتمع تجاری کوروش</h4>
-                        </div>
-                        <div data-aos="fade" className="item">
-                            <img src={imageOne} alt="projects" />
-                            <h4>مجتمع تجاری کوروش</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div
-                // style={{ backgroundImage: 'http://79.175.134.143:2000/static/homea/img/port5.jpg' }}
-
-                className="credentials"
-            >
+                )}
+            <div className="credentials">
                 <h2 data-aos="fade">آمار و اطلاعات</h2>
                 <p data-aos="fade">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
                 <div className="container">
