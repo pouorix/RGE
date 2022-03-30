@@ -15,5 +15,5 @@ export interface CategoryList extends __CategoryList {}
 export interface Award extends __Award {}
 export interface RecentProject extends __RecentProject {}
 export interface History extends __History {}
-export interface BlogList extends __BlogList {}
+export interface BlogListType extends __BlogList {}
 export { __AuthStatus as AuthStatus };

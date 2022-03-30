@@ -1,69 +1,68 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { ReduxState } from '../../interface';
+import { RecentProject, ReduxState } from '../../interface';
 import './blogDetail.style.scss';
-import { Link, useParams } from 'react-router-dom';
-import ImageOne from '../../assets/images/1.jpg';
+import { useParams } from 'react-router-dom';
+import { get, responseValidator } from '../../scripts/api';
+import { API } from '../../data';
+import { toast } from 'react-toastify';
+import Loading from '../../utilities/component/loading/loading.index';
 const BlogDetail: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     const { id } = useParams<{ id: string }>();
-    return (
+    const [data, setData] = useState<RecentProject>();
+    const [loading, setLoading] = useState<boolean>(true);
+    const [items, setItems] = useState<{ image: string; text: string }[]>([]);
+    function checkNull(text1: string, text2: string) {
+        if (text1 && text1 !== '' && text2 && text2 !== '') return true;
+        else return false;
+    }
+    useEffect(() => {
+        get<RecentProject>(API.blogDetail, { id }).then((res) => {
+            if (responseValidator(res.status) && res.data) {
+                const localData = res.data;
+                setData(localData);
+                setLoading(false);
+                const temp: { image: string; text: string }[] = [];
+                if (checkNull(localData?.secondtxt, localData?.secondimg))
+                    temp.push({ image: localData?.secondimg, text: localData?.secondtxt });
+                if (checkNull(localData?.thirdtxt, localData?.thirdimg))
+                    temp.push({ image: localData?.thirdimg, text: localData?.thirdtxt });
+                if (checkNull(localData?.fourthtxt, localData?.fourthimg))
+                    temp.push({ image: localData?.fourthimg, text: localData?.fourthtxt });
+                if (checkNull(localData?.fifthtxt, localData?.fifthimg))
+                    temp.push({ image: localData?.fifthimg, text: localData?.fifthtxt });
+                if (checkNull(localData?.sixthtxt, localData?.sixthimg))
+                    temp.push({ image: localData?.sixthimg, text: localData?.sixthtxt });
+                if (checkNull(localData?.seventhtxt, localData?.seventhimg))
+                    temp.push({ image: localData?.seventhimg, text: localData?.seventhtxt });
+                if (checkNull(localData?.eighthtxt, localData?.eighthimg))
+                    temp.push({ image: localData?.eighthimg, text: localData?.eighthtxt });
+                if (checkNull(localData?.ninthtxt, localData?.ninthimg))
+                    temp.push({ image: localData?.ninthimg, text: localData?.ninthtxt });
+                if (checkNull(localData?.tenthtxt, localData?.tenthimg))
+                    temp.push({ image: localData?.tenthimg, text: localData?.tenthtxt });
+                setItems(temp);
+            } else toast.error('خطایی رخ داده است.');
+        });
+    }, []);
+    return loading ? (
+        <Loading />
+    ) : (
         <div className="rge-blog-detail-page">
             <div className="my-header">
-                <img src={ImageOne} alt="projectDetail" />
+                <img src={data?.firstimg} alt="projectDetail" />
                 <div className="text">
-                    <h3>لورم ایپسوم متن ساختگی</h3>
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی
-                        مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
-                        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری
-                        را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
-                        صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و
-                        زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-                        اساسا مورد استفاده قرار گیرد.
-                    </p>
+                    <h3>{data?.title}</h3>
+                    <p>{data?.firsttxt}</p>
                 </div>
             </div>
             <div className="my-content">
-                <div className="item">
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی
-                        مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
-                        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری
-                        را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
-                        صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و
-                        زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-                        اساسا مورد استفاده قرار گیرد.
-                    </p>
-                    <img src={ImageOne} alt="projectDetail" />
-                </div>
-                <div className="item">
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی
-                        مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
-                        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری
-                        را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
-                        صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و
-                        زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-                        اساسا مورد استفاده قرار گیرد.
-                    </p>
-                    <img src={ImageOne} alt="projectDetail" />
-                </div>
-                <div className="item">
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی
-                        مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
-                        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری
-                        را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
-                        صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و
-                        زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-                        اساسا مورد استفاده قرار گیرد.
-                    </p>
-                    <img src={ImageOne} alt="projectDetail" />
-                </div>
+                {items.map((item, index) => (
+                    <div key={index} className="item">
+                        <p>{item.text}</p>
+                        <img src={item.image} alt="projectDetail" />
+                    </div>
+                ))}
             </div>
         </div>
     );

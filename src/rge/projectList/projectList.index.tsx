@@ -8,6 +8,7 @@ import ProjectListCard from './card/projectListCard.index';
 import { Bars } from 'react-loader-spinner';
 import { get, responseValidator } from '../../scripts/api';
 import { toast } from 'react-toastify';
+import Loading from '../../utilities/component/loading/loading.index';
 
 const ProjectList: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     const { id } = useParams<{ id: string }>();
@@ -29,9 +30,7 @@ const ProjectList: React.FC<ConnectedProps<typeof connector>> = function (props:
     }, [window.location.href]);
 
     return loading ? (
-        <div className="rge-landing-loading">
-            <Bars color="gold" height={100} width={100} />
-        </div>
+        <Loading />
     ) : (
         <div className="rge-project-list-page">
             <div className="local-header">

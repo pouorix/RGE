@@ -3,11 +3,11 @@ import { connect, ConnectedProps } from 'react-redux';
 import { RecentProject, ReduxState } from '../../interface';
 import './projectDetail.style.scss';
 import { Link, useParams } from 'react-router-dom';
-import ImageOne from '../../assets/images/1.jpg';
 import { Bars } from 'react-loader-spinner';
 import { get, responseValidator } from '../../scripts/api';
 import { API } from '../../data';
 import { toast } from 'react-toastify';
+import Loading from '../../utilities/component/loading/loading.index';
 const ProjectDetail: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     const { id } = useParams<{ id: string }>();
     const [data, setData] = useState<RecentProject>();
@@ -45,11 +45,9 @@ const ProjectDetail: React.FC<ConnectedProps<typeof connector>> = function (prop
                 setItems(temp);
             } else toast.error('خطایی رخ داده است.');
         });
-    });
+    }, []);
     return loading ? (
-        <div className="rge-landing-loading">
-            <Bars color="gold" height={100} width={100} />
-        </div>
+        <Loading />
     ) : (
         <div className="rge-project-detail-page">
             <div className="my-header">

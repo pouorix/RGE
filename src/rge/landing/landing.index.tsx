@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { Award, BlogList, CategoryList, Config, History, RecentProject, ReduxState, TopBanner } from '../../interface';
+import {
+    Award,
+    BlogListType,
+    CategoryList,
+    Config,
+    History,
+    RecentProject,
+    ReduxState,
+    TopBanner,
+} from '../../interface';
 import './landing.style.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, EffectCoverflow } from 'swiper';
@@ -13,6 +22,7 @@ import 'aos/dist/aos.css';
 import { Bars } from 'react-loader-spinner';
 import { get, responseValidator } from '../../scripts/api';
 import { toast } from 'react-toastify';
+import Loading from '../../utilities/component/loading/loading.index';
 const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     AOS.init();
     // You can also pass an optional settings object
@@ -58,7 +68,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
     const [recentProject, setRecentProject] = useState<RecentProject[]>();
     const [history, setHistory] = useState<History[]>();
     const [historySelected, setHistorySelected] = useState<History>();
-    const [blog, setBlog] = useState<BlogList[]>();
+    const [blog, setBlog] = useState<BlogListType[]>();
     useEffect(() => {
         const temp = [
             get<any>(API.landing.config),
@@ -95,9 +105,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
         });
     }, []);
     return loading ? (
-        <div className="rge-landing-loading">
-            <Bars color="gold" height={100} width={100} />
-        </div>
+        <Loading />
     ) : (
         <div className="rge-landing">
             <Swiper
