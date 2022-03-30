@@ -54,3 +54,37 @@ export interface __RecentProject {
     thumbnailimg: string;
     title: string;
 }
+export interface __History {
+    id: number;
+    image: string;
+    firsttxt: string;
+    secondtxt: string;
+    enable: boolean;
+}
+export interface __BlogList {
+    eighthimg: string;
+    eighthtxt: string;
+    enable: boolean;
+    fifthimg: string;
+    fifthtxt: string;
+    firstPage: boolean;
+    firstimg: string;
+    firsttxt: string;
+    fourthimg: string;
+    fourthtxt: string;
+    id: number;
+    ninthimg: string;
+    ninthtxt: string;
+    secondimg: string;
+    secondtxt: string;
+    seventhimg: string;
+    seventhtxt: string;
+    sixthimg: string;
+    sixthtxt: string;
+    tenthimg: string;
+    tenthtxt: string;
+    thirdimg: string;
+    thirdtxt: string;
+    thumbnailimg: string;
+    title: string;
+}

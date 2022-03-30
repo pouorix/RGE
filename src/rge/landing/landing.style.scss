@@ -406,9 +406,9 @@ html {
       margin: 32px 0;
 
       .list {
-        @include rge-lg {
-          margin-left: 64px;
-        }
+        //@include rge-lg {
+        //  margin-left: 64px;
+        //}
         @include rge-pre-lg {
           margin-bottom: 64px;
         }
@@ -459,7 +459,7 @@ html {
 
 
           h4 {
-            text-align: center;
+            //text-align: center;
             margin-bottom: 16px;
             @include rge-size(font-size, 18px, 16px);
             //font-size: 18px;
@@ -467,7 +467,7 @@ html {
           }
 
           p {
-            text-align: center;
+            //text-align: center;
             @include rge-size(font-size, 16px, 14px);
             //font-size: 16px;
             color: #adadad;
