@@ -4,8 +4,15 @@ html {
   scroll-behavior: smooth;
 }
 
-
+.rge-landing-loading{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .rge-landing {
+  overflow: hidden;
   .my-slider {
     width: 100%;
     height: 100%;

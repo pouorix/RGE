@@ -10,11 +10,13 @@
     "@types/node-sass": "^4.11.2",
     "@types/react": "^17.0.42",
     "@types/react-dom": "^17.0.14",
+    "aos": "^3.0.0-beta.6",
     "bootstrap": "^4.6.0",
     "mapir-react-component": "^2.0.2",
     "node-sass": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-loader-spinner": "^6.0.0-0",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.0",
@@ -50,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@types/aos": "^3.0.4",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
     "@types/redux": "^3.6.0",

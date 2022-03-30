@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { ReduxState } from '../../interface';
 import './landing.style.scss';
@@ -11,7 +11,33 @@ import Mapir from 'mapir-react-component';
 import 'mapir-react-component/dist/index.css';
 import { Link } from 'react-router-dom';
 import { RoutePath } from '../../data';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { BallTriangle, Bars } from 'react-loader-spinner'; // You can also use <link> for styles
 const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
+    AOS.init();
+    // You can also pass an optional settings object
+    // below listed default settings
+    AOS.init({
+        // Global settings:
+        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+        startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+        initClassName: 'aos-init', // class applied after initialization
+        animatedClassName: 'aos-animate', // class applied on animation
+        useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+        disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+        debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+        throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+        // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+        offset: 120, // offset (in px) from the original trigger point
+        delay: 0, // values from 0 to 3000, with step 50ms
+        duration: 1000, // values from 0 to 3000, with step 50ms
+        easing: 'ease-in-out', // default easing for AOS animations
+        once: false, // whether animation should happen only once - while scrolling down
+        mirror: false, // whether elements should animate out while scrolling past them
+        anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+    });
     const Map = Mapir.setToken({
         transformRequest: (url: string) => {
             return {
@@ -24,7 +50,13 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
             };
         },
     });
-    return (
+
+    const [loading, setLoading] = useState<boolean>(true);
+    return loading ? (
+        <div className="rge-landing-loading">
+            <Bars color="gold" height={100} width={100} />
+        </div>
+    ) : (
         <div className="rge-landing">
             <Swiper
                 autoplay={{
@@ -65,28 +97,28 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                 </SwiperSlide>
             </Swiper>
             <div className="categories">
-                <Link to={RoutePath.projectList(1)} className="item">
+                <Link data-aos="fade" to={RoutePath.projectList(1)} className="item">
                     <img src={imageOne} alt="دسته بندی" />
                     <div className="text">
                         <h4>پروژه نورپردازی نما</h4>
                         <h6>لورم ایپسوم متن ساختگی با</h6>
                     </div>
                 </Link>
-                <Link to={RoutePath.projectList(2)} className="item">
+                <Link data-aos="fade" to={RoutePath.projectList(2)} className="item">
                     <img src={imageTwo} alt="دسته بندی" />
                     <div className="text">
                         <h4>پروژه نورپردازی نما</h4>
                         <h6>لورم ایپسوم متن ساختگی با</h6>
                     </div>
                 </Link>
-                <Link to={RoutePath.projectList(3)} className="item">
+                <Link data-aos="fade" to={RoutePath.projectList(3)} className="item">
                     <img src={imageThree} alt="دسته بندی" />
                     <div className="text">
                         <h4>پروژه نورپردازی نما</h4>
                         <h6>لورم ایپسوم متن ساختگی با</h6>
                     </div>
                 </Link>
-                <Link to={RoutePath.projectList(4)} className="item">
+                <Link data-aos="fade" to={RoutePath.projectList(4)} className="item">
                     <img src={imageOne} alt="دسته بندی" />
                     <div className="text">
                         <h4>پروژه نورپردازی نما</h4>
@@ -94,7 +126,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                     </div>
                 </Link>
             </div>
-            <div id="award" className="awards">
+            <div data-aos="fade" id="award" className="awards">
                 <div className="title">
                     <h2>جایزه ها</h2>
                     <h4>جایزه ها</h4>
@@ -157,36 +189,36 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                 </div>
             </div>
             <div id="projects" className="projects">
-                <div className="title">
+                <div data-aos="fade" className="title">
                     <h2>پروژه های اخیر</h2>
                     <h4>پروژه های اخیر</h4>
                 </div>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                <p data-aos="fade">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
                 <div className="container">
                     <div className="my-row">
-                        <div className="item">
+                        <div data-aos="fade" className="item">
                             <img src={imageOne} alt="projects" />
                             <h4>مجتمع تجاری کوروش</h4>
                         </div>
-                        <div className="item">
+                        <div data-aos="fade" className="item">
                             <img src={imageOne} alt="projects" />
                             <h4>مجتمع تجاری کوروش</h4>
                         </div>
-                        <div className="item">
+                        <div data-aos="fade" className="item">
                             <img src={imageOne} alt="projects" />
                             <h4>مجتمع تجاری کوروش</h4>
                         </div>
                     </div>
                     <div className="my-row">
-                        <div className="item">
+                        <div data-aos="fade" className="item">
                             <img src={imageOne} alt="projects" />
                             <h4>مجتمع تجاری کوروش</h4>
                         </div>
-                        <div className="item">
+                        <div data-aos="fade" className="item">
                             <img src={imageOne} alt="projects" />
                             <h4>مجتمع تجاری کوروش</h4>
                         </div>
-                        <div className="item">
+                        <div data-aos="fade" className="item">
                             <img src={imageOne} alt="projects" />
                             <h4>مجتمع تجاری کوروش</h4>
                         </div>
@@ -195,45 +227,46 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
             </div>
             <div
                 // style={{ backgroundImage: 'http://79.175.134.143:2000/static/homea/img/port5.jpg' }}
+
                 className="credentials"
             >
-                <h2>آمار و اطلاعات</h2>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                <h2 data-aos="fade">آمار و اطلاعات</h2>
+                <p data-aos="fade">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
                 <div className="container">
-                    <div className="item">
+                    <div data-aos="fade" className="item">
                         <h3>16</h3>
                         <h5>جایزه ها و افتخارات</h5>
                     </div>
-                    <div className="item">
+                    <div data-aos="fade" className="item">
                         <h3>950</h3>
                         <h5>پروژه ها</h5>
                     </div>
-                    <div className="item">
+                    <div data-aos="fade" className="item">
                         <h3>8</h3>
                         <h5>کشور</h5>
                     </div>
-                    <div className="item">
+                    <div data-aos="fade" className="item">
                         <h3>24</h3>
                         <h5>سابقه کار</h5>
                     </div>
                 </div>
             </div>
             <div className="history">
-                <h2>تاریخچه شرکت</h2>
+                <h2 data-aos="fade">تاریخچه شرکت</h2>
                 <div className="history-content">
                     <div className="list">
-                        <img src={imageOne} alt="history" />
-                        <img src={imageTwo} alt="history" />
-                        <img src={imageThree} alt="history" />
+                        <img data-aos="fade" src={imageOne} alt="history" />
+                        <img data-aos="fade" src={imageTwo} alt="history" />
+                        <img data-aos="fade" src={imageThree} alt="history" />
                     </div>
                     <div className="my-content">
-                        <img src={imageOne} alt="history" />
+                        <img data-aos="fade" src={imageOne} alt="history" />
                         <div className="text">
-                            <h4>
+                            <h4 data-aos="fade">
                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
                                 است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
                             </h4>
-                            <p>
+                            <p data-aos="fade">
                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
                                 است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
                                 فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
@@ -249,10 +282,10 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                 </div>
             </div>
             <div className="blog">
-                <h2>بلاگ</h2>
+                <h2 data-aos="fade">بلاگ</h2>
                 <div className="my-container">
                     <div className="my-column">
-                        <div className="item">
+                        <div data-aos="fade" className="item">
                             <div className="text">
                                 <h4>لورم ایپسوم</h4>
                                 <p>
@@ -266,7 +299,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                             </div>
                             <button className="my-btn">توضیحات بیشتر</button>
                         </div>
-                        <div className="item">
+                        <div data-aos="fade" className="item">
                             <div className="text">
                                 <h4>لورم ایپسوم</h4>
                                 <p>
@@ -314,7 +347,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                         </div>
                     </div>
                     <div className="my-column">
-                        <div className="item">
+                        <div data-aos="fade" className="item">
                             <div className="text">
                                 <h4>لورم ایپسوم</h4>
                                 <p>
@@ -348,7 +381,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                             </div>
                             <button className="my-btn">توضیحات بیشتر</button>
                         </div>
-                        <div className="item">
+                        <div data-aos="fade" className="item">
                             <div className="text">
                                 <h4>لورم ایپسوم</h4>
                                 <p>
@@ -364,8 +397,8 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                 </div>
             </div>
             <div className="about">
-                <h4>درباره ما</h4>
-                <p>
+                <h4 data-aos="fade">درباره ما</h4>
+                <p data-aos="fade">
                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
                     چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
                     نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته
@@ -377,28 +410,28 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                 </p>
             </div>
             <div className="contact">
-                <div className="title">
+                <div data-aos="fade" className="title">
                     <h2>تماس با ما</h2>
                     <h4>تماس با ما</h4>
                 </div>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                <p data-aos="fade">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
 
                 <div className="my-box">
-                    <div className="item">
+                    <div data-aos="fade" className="item">
                         <div className="icon">
                             <span className="material-icons">call</span>
                         </div>
                         <h3>تماس با ما</h3>
                         <p>09123456789</p>
                     </div>
-                    <div className="item">
+                    <div data-aos="fade" className="item">
                         <div className="icon">
                             <span className="material-icons">email</span>
                         </div>
                         <h3>ایمیل</h3>
                         <p>info@rge.ir</p>
                     </div>
-                    <div className="item">
+                    <div data-aos="fade" className="item">
                         <div className="icon">
                             <span className="material-icons">place</span>
                         </div>
@@ -406,7 +439,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                         <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
                     </div>
                 </div>
-                <div className="map-form">
+                <div data-aos="fade" className="map-form">
                     <div className="form">
                         <div className="my-row">
                             <input placeholder="نام" />

@@ -1,11 +1,15 @@
 @import "src/utilities/references/index";
-.rge-project-detail-page{
-  .my-header{
+
+.rge-project-detail-page {
+  .my-header {
     width: 100%;
-    min-height: 600px;
+    @include rge-size(min-height, 600px, 400px);
+    //min-height: 600px;
     position: relative;
-    padding: 64px;
-    img{
+    @include rge-size(padding, 64px, 32px);
+    //padding: 64px;
+
+    img {
       position: absolute;
       top: 0;
       left: 0;
@@ -14,46 +18,63 @@
       object-fit: cover;
       z-index: -1;
     }
-    .text{
+
+    .text {
       max-width: 800px;
       width: 100%;
-      background-color: rgba(black,0.7);
+      background-color: rgba(black, 0.7);
       //background-color: red;
       border-radius: 10px;
       padding: 16px;
-      h3{
-        font-size: 22px;
+
+      h3 {
+        @include rge-size(font-size, 20px, 14px);
+        //font-size: 22px;
         color: gold;
         font-weight: 700;
-        margin-bottom: 32px;
+        @include rge-size(margin-bottom, 32px, 16px);
+        //margin-bottom: 32px;
       }
-      p{
+
+      p {
         color: $white2;
-        font-size: 18px;
+        @include rge-size(font-size, 16px, 12px);
+        //font-size: 18px;
         font-weight: 400;
       }
     }
   }
-  .my-content{
+
+  .my-content {
+
     width: 100%;
     max-width: $maxWidth;
     margin: 64px auto;
-    .item{
+    padding: 16px;
+
+    .item {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-bottom: 64px;
-      p{
-        font-size: 16px;
+      @include rge-size(margin-bottom, 64px, 32px);
+      //margin-bottom: 64px;
+
+      p {
+        @include rge-size(font-size, 15px, 12px);
+        //font-size: 16px;
         color: $white2;
         font-weight: 400;
-        margin-bottom: 32px;
+        @include rge-size(margin-bottom, 32px, 16px);
+        //margin-bottom: 32px;
       }
-      img{
-        max-width: 800px;
-        max-height: 600px;
+
+      img {
+        @include rge-size(max-width, 800px, 400px);
+        @include rge-size(max-height, 600px, 300px);
+        //max-width: 800px;
+        //max-height: 600px;
         width: 100%;
         height: 100%;
         object-fit: cover;
