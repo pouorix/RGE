@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { ReduxState } from '../../interface';
+import { Config, ReduxState } from '../../interface';
 import './landing.style.scss';
 import imageOne from '../../assets/images/1.jpg';
 import imageTwo from '../../assets/images/2.jpg';
@@ -10,10 +10,12 @@ import { Autoplay, EffectFade, EffectCoverflow } from 'swiper';
 import Mapir from 'mapir-react-component';
 import 'mapir-react-component/dist/index.css';
 import { Link } from 'react-router-dom';
-import { RoutePath } from '../../data';
+import { API, RoutePath } from '../../data';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { BallTriangle, Bars } from 'react-loader-spinner'; // You can also use <link> for styles
+import { BallTriangle, Bars } from 'react-loader-spinner';
+import { get, responseValidator } from '../../scripts/api';
+import { toast } from 'react-toastify';
 const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     AOS.init();
     // You can also pass an optional settings object
@@ -52,6 +54,22 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
     });
 
     const [loading, setLoading] = useState<boolean>(true);
+    const [data, setData] = useState<Config>();
+
+    useEffect(() => {
+        // window.onbeforeunload = function () {
+        //     console.log('sdadasd');
+        //     window.scrollTo(0, 0);
+        // };
+
+        get<Config>(API.config).then((res) => {
+            if (responseValidator(res.status) && res.data) {
+                setLoading(false);
+                console.log(res.data);
+                setData(res.data);
+            } else toast.error('خطایی رخ داده است');
+        });
+    }, []);
     return loading ? (
         <div className="rge-landing-loading">
             <Bars color="gold" height={100} width={100} />
@@ -451,7 +469,12 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                     </div>
                     {/*<span />*/}
                     <div className="map">
-                        <Mapir Map={Map} apiKey={'Your_API_KEY'} />
+                        {/*<Mapir*/}
+                        {/*    Map={Map}*/}
+                        {/*    apiKey={*/}
+                        {/*        'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjQ1OTc2Yzg0NzNmYjFlYWM3YTBhODc1NTcyMWU0YzI2NDVkZDUzM2RmY2YzZGM5ODE5ZTk4YWFjY2JkNGNhZWIzNWQ1YjE3ZWIxZjAwNmU5In0.eyJhdWQiOiIxNzQ4MSIsImp0aSI6IjQ1OTc2Yzg0NzNmYjFlYWM3YTBhODc1NTcyMWU0YzI2NDVkZDUzM2RmY2YzZGM5ODE5ZTk4YWFjY2JkNGNhZWIzNWQ1YjE3ZWIxZjAwNmU5IiwiaWF0IjoxNjQ4NTExNTg4LCJuYmYiOjE2NDg1MTE1ODgsImV4cCI6MTY1MTEwMzU4OCwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.fFsWZc_N88PR1MwK_VUXJWVUDLNP_7VVwXgKUMbWXVqMn-BH4j-MDMoh8jZ201_288OsQSy5yTfGEFOJlyYe6jTGcWpyK1go76MrxyAPDPCwpeSBzfOGNtaMBdq8N3b9bnX58usb3OwI0s3G1kPwwqWBnH6WAPDxcFFoQnawoqvsYIMWEQirXnqgvClEk7besIwtvwb2mNYTYR-2gZTzSCAVA-u5wT0OcNQPm5LjfYAWMaW3-dePKQGNoNbBDTvlKdiCmld3kWcUqEFz93lXN4yOircrfVV_Z3WnK11yLsez1rfY-iZmeT_t_j7SViSQrhL6txhAr6HrGk-uUou9cA'*/}
+                        {/*    }*/}
+                        {/*/>*/}
                     </div>
                 </div>
             </div>

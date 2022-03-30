@@ -13,28 +13,31 @@ import ProjectList from './projectList/projectList.index';
 import ProjectDetail from './projectDetail/projectDetail.index';
 import BlogList from './blogList/blogList.index';
 import BlogDetail from './blogDetail/blogDetail.index';
+import ScrollToTop from './scrollToTop';
 const Rge: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     return (
         <Router>
-            <Header />
-            <Switch>
-                <Route path={RoutePath.projectList(':id')}>
-                    <ProjectList />
-                </Route>
-                <Route path={RoutePath.projectDetail(':id')}>
-                    <ProjectDetail />
-                </Route>
-                <Route exact path={RoutePath.blogDetail(':id')}>
-                    <BlogDetail />
-                </Route>
-                <Route path={RoutePath.blog}>
-                    <BlogList />
-                </Route>
-                <Route path="*">
-                    <Landing />
-                </Route>
-            </Switch>
-            <Footer />
+            <ScrollToTop>
+                <Header />
+                <Switch>
+                    <Route path={RoutePath.projectList(':id')}>
+                        <ProjectList />
+                    </Route>
+                    <Route path={RoutePath.projectDetail(':id')}>
+                        <ProjectDetail />
+                    </Route>
+                    <Route exact path={RoutePath.blogDetail(':id')}>
+                        <BlogDetail />
+                    </Route>
+                    <Route path={RoutePath.blog}>
+                        <BlogList />
+                    </Route>
+                    <Route path="*">
+                        <Landing />
+                    </Route>
+                </Switch>
+                <Footer />
+            </ScrollToTop>
         </Router>
     );
 };
