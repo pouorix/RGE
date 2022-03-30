@@ -10,6 +10,7 @@ import 'swiper/css/effect-coverflow';
 import Footer from '../utilities/component/footer/footer.index';
 import { RoutePath } from '../data';
 import ProjectList from './projectList/projectList.index';
+import ProjectDetail from './projectDetail/projectDetail.index';
 const Rge: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     return (
         <Router>
@@ -17,6 +18,9 @@ const Rge: React.FC<ConnectedProps<typeof connector>> = function (props: Connect
             <Switch>
                 <Route path={RoutePath.projectList(':id')}>
                     <ProjectList />
+                </Route>
+                <Route path={RoutePath.projectDetail(':id')}>
+                    <ProjectDetail />
                 </Route>
                 <Route path="*">
                     <Landing />

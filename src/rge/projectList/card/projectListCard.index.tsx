@@ -4,6 +4,7 @@ import { ReduxState } from '../../../interface';
 import './projectListCard.style.scss';
 import { Link, useParams } from 'react-router-dom';
 import imageOne from '../../../assets/images/1.jpg';
+import { RoutePath } from '../../../data';
 
 const ProjectListCard: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     return (
@@ -12,7 +13,9 @@ const ProjectListCard: React.FC<ConnectedProps<typeof connector>> = function (pr
             <div className="info">
                 <h4>لورم ایمپسوم</h4>
                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                <div className="more">توضیحات بیشتر</div>
+                <Link to={RoutePath.projectDetail(1)} className="more">
+                    توضیحات بیشتر
+                </Link>
             </div>
         </div>
     );
