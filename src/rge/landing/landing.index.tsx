@@ -15,7 +15,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, EffectCoverflow } from 'swiper';
 import Mapir from 'mapir-react-component';
 import 'mapir-react-component/dist/index.css';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { API, RoutePath } from '../../data';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -308,14 +308,18 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                                     <h4>{blog[0].title}</h4>
                                     <p>{blog[0].firsttxt}</p>
                                 </div>
-                                <button className="my-btn">توضیحات بیشتر</button>
+                                <Link to={RoutePath.blogDetail(blog[0].id)}>
+                                    <button className="my-btn">توضیحات بیشتر</button>
+                                </Link>
                             </div>
                             <div data-aos="fade" className="item">
                                 <div className="text">
                                     <h4>{blog[1].title}</h4>
                                     <p>{blog[1].firsttxt}</p>
                                 </div>
-                                <button className="my-btn">توضیحات بیشتر</button>
+                                <Link to={RoutePath.blogDetail(blog[1].id)}>
+                                    <button className="my-btn">توضیحات بیشتر</button>
+                                </Link>
                             </div>
                         </div>
                         <div className="my-column">
@@ -324,14 +328,18 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                                     <h4>{blog[2].title}</h4>
                                     <p>{blog[2].firsttxt}</p>
                                 </div>
-                                <button className="my-btn">توضیحات بیشتر</button>
+                                <Link to={RoutePath.blogDetail(blog[2].id)}>
+                                    <button className="my-btn">توضیحات بیشتر</button>
+                                </Link>
                             </div>
                             <div data-aos="fade" className="item">
                                 <div className="text">
                                     <h4>{blog[3].title}</h4>
                                     <p>{blog[3].firsttxt}</p>
                                 </div>
-                                <button className="my-btn">توضیحات بیشتر</button>
+                                <Link to={RoutePath.blogDetail(blog[3].id)}>
+                                    <button className="my-btn">توضیحات بیشتر</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
