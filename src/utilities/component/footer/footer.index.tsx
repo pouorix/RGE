@@ -36,8 +36,8 @@ const Footer: React.FC<ConnectedProps<typeof connector>> = function (props: Conn
                 </div>
             </div>
             <div className="button-footer">
-                <h5>© Copyright XavierDesigns. All Rights Reserved</h5>
-                <h6>Designed by Xavier B.</h6>
+                <h5>© Copyright by Name. All Rights Reserved</h5>
+                <h6>Designed by Name </h6>
             </div>
         </div>
     );

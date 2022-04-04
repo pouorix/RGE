@@ -8,6 +8,7 @@ import { get, responseValidator } from '../../scripts/api';
 import { API } from '../../data';
 import { toast } from 'react-toastify';
 import Loading from '../../utilities/component/loading/loading.index';
+import * as url from 'url';
 const ProjectDetail: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     const { id } = useParams<{ id: string }>();
     const [data, setData] = useState<RecentProject>();
@@ -61,7 +62,13 @@ const ProjectDetail: React.FC<ConnectedProps<typeof connector>> = function (prop
                 {items.map((item, index) => (
                     <div key={index} className="item">
                         <p>{item.text}</p>
-                        <img src={item.image} alt="projectDetail" />
+                        {index !== 1 || !data?.url ? (
+                            <img src={item.image} alt="projectDetail" />
+                        ) : (
+                            <a target="_blank" rel="noreferrer" href={`http:${data.url.split('http:')[1]}`}>
+                                <img src={item.image} alt="projectDetail" />
+                            </a>
+                        )}
                     </div>
                 ))}
             </div>

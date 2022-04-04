@@ -27,6 +27,7 @@ export interface __Award {
 }
 export interface __RecentProject {
     categoryEntity: __CategoryList;
+    url: string;
     eighthimg: string;
     eighthtxt: string;
     enable: boolean;

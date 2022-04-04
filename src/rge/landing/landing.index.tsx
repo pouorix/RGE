@@ -373,6 +373,13 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                     </div>
                     <div data-aos="fade" className="item">
                         <div className="icon">
+                            <span className="material-icons">group</span>
+                        </div>
+                        <h3>شبکه اجتماعی</h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                    </div>
+                    <div data-aos="fade" className="item">
+                        <div className="icon">
                             <span className="material-icons">place</span>
                         </div>
                         <h3>آدرس</h3>

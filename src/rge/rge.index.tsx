@@ -13,11 +13,19 @@ import ProjectList from './projectList/projectList.index';
 import ProjectDetail from './projectDetail/projectDetail.index';
 import BlogList from './blogList/blogList.index';
 import BlogDetail from './blogDetail/blogDetail.index';
-import ScrollToTop from './scrollToTop';
+import ScrollToTopLocal from './scrollToTop';
+import ScrollToTop from 'react-scroll-to-top';
 const Rge: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     return (
         <Router>
-            <ScrollToTop>
+            <ScrollToTop
+                width="20"
+                height="20"
+                smooth
+                color="white"
+                style={{ backgroundColor: '#2c2c2c', padding: '10px' }}
+            />
+            <ScrollToTopLocal>
                 <Header />
                 <Switch>
                     <Route path={RoutePath.projectList(':id')}>
@@ -37,7 +45,7 @@ const Rge: React.FC<ConnectedProps<typeof connector>> = function (props: Connect
                     </Route>
                 </Switch>
                 <Footer />
-            </ScrollToTop>
+            </ScrollToTopLocal>
         </Router>
     );
 };
