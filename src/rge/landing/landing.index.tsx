@@ -77,7 +77,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
             get<any>(API.landing.award),
             get<any>(API.landing.recentProject),
             get<any>(API.landing.history),
-            get<any>(API.landing.blog),
+            get<any>(API.landing.firstPageBlog),
         ];
         Promise.all(temp).then((res) => {
             if (

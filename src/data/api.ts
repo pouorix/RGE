@@ -11,6 +11,7 @@ export const __API = {
         recentProject: '/user/firspageProject/',
         history: '/user/history/',
         blog: '/user/blog/',
+        firstPageBlog: '/user/firspageblog',
     },
     categoryProjects: '/user/projectwithcategory',
     projectDetail: '/user/detailproject',
