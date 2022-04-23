@@ -74,7 +74,7 @@ html {
       box-shadow: 0 2px 15px rgb(0, 0, 0 / 10%);
       transition: all ease-in-out 0.3s;
       cursor: pointer;
-      border-radius: 6px;
+      //border-radius: 6px;
       overflow: hidden;
       @include rge-pre-lg {
         margin-top: 32px;
@@ -417,10 +417,10 @@ html {
         img {
           width: 100%;
           @include rge-xl {
-            width: 150px;
+            width: 100px;
           }
 
-          height: 150px;
+          height: 100px;
           object-fit: cover;
           margin-bottom: 12px;
           box-shadow: 0 2px 15px rgb(0, 0, 0 / 10%);
@@ -632,7 +632,7 @@ html {
 
       .item {
         flex: 1;
-        height: 100%;
+        height: 280px;
 
         //&:nth-child(3) {
         //  flex: 2;
@@ -648,10 +648,10 @@ html {
         }
 
         border-radius: 5px;
-        background-color: #4b4b4b;
-
+        //background-color: #4b4b4b;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
         .icon {
-          border: dashed 1px white;
+          border: dashed 1px $black2;
           border-radius: 100%;
           width: 60px;
           height: 60px;
@@ -668,12 +668,12 @@ html {
         h3 {
           margin: 12px 0;
           font-size: 18px;
-          color: $white2;
+          color: $black3;
         }
 
         p {
           font-size: 16px;
-          color: $white3;
+          color: $black3;
         }
       }
     }

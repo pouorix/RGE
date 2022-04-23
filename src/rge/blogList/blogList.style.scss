@@ -1,0 +1,69 @@
+@import "src/utilities/references/index";
+
+.rge-blog-list-page {
+  padding-bottom: 16px;
+  .local-header {
+    width: 100%;
+    height: 60px;
+    background-color: #151515;
+
+    .my-content {
+      max-width: $maxWidth;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      .item {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        h4 {
+          font-size: 14px;
+          color: $white3;
+          transition: color 0.3s ease-in-out;
+        }
+
+        background-color: transparent;
+        transition: background-color 0.3s ease-in-out;
+        cursor: pointer;
+
+        &:hover, &.active {
+          background-color: gold;
+
+          h4 {
+            color: black;
+          }
+
+        }
+      }
+
+    }
+  }
+
+  .my-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 32px;
+
+    .container-container{
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      width: 100%;
+      max-width: $maxWidth;
+      padding: 0 16px;
+      >*{
+        margin-bottom: 32px;
+      }
+    }
+
+  }
+}

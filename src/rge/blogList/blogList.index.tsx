@@ -11,6 +11,7 @@ import { Bars } from 'react-loader-spinner';
 import { BlogListType } from '../../interface';
 import Loading from '../../utilities/component/loading/loading.index';
 import ProjectListCard from '../projectList/card/projectListCard.index';
+import PaginationComponent from '../../utilities/component/pagination/pagination.index';
 
 const BlogList: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     const [loading, setLoading] = useState<boolean>(true);
@@ -27,16 +28,15 @@ const BlogList: React.FC<ConnectedProps<typeof connector>> = function (props: Co
     return loading ? (
         <Loading />
     ) : (
-        <div className="rge-project-list-page">
+        <div className="rge-blog-list-page">
             <div className="my-container">
                 <div className="container-container">
                     {data?.map((item, index) => (
                         <BlogListCard data={item} key={index} />
                     ))}
-                    <div className="grid-guard" />
-                    <div className="grid-guard" />
                 </div>
             </div>
+            <PaginationComponent currentPage={1} pageCount={10} isShowArrow={false} onChange={(e) => console.log(e)} />
         </div>
     );
 };
