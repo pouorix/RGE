@@ -4,6 +4,7 @@ import { ReduxState } from '../../../interface';
 import './header.style.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { RoutePath } from '../../../data';
+import HomeiCon from '../../../assets/images/home_icon.png';
 const Header: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     return (
         <div className="rge-header">
@@ -32,24 +33,26 @@ const Header: React.FC<ConnectedProps<typeof connector>> = function (props: Conn
                 <div className="content">
                     <Link to={'/'}>RGE LIGHTING DESIGN</Link>
                     <span />
-                    <NavLink className="item" exact to="/" activeClassName="active">
-                        <h4>خانه</h4>
-                    </NavLink>
-                    <a className="item" href="/#about">
-                        <h4>درباره ما</h4>
-                    </a>
-                    <a className="item" href="/#projects">
-                        <h4>پروژه ها</h4>
-                    </a>
-                    <a className="item" href="/#award">
-                        <h4>جایزه ها</h4>
-                    </a>
-                    <NavLink className="item" to={RoutePath.blog} activeClassName="active">
-                        <h4>بلاگ</h4>
-                    </NavLink>
+
                     <a className="item" href="/#contact">
                         <h4>تماس با ما</h4>
                     </a>
+                    <a className="item" href="/#about">
+                        <h4>درباره ما</h4>
+                    </a>
+                    <NavLink className="item" to={RoutePath.blog} activeClassName="active">
+                        <h4>وبلاگ</h4>
+                    </NavLink>
+
+                    <a className="item" href="/#award">
+                        <h4>جایزه ها</h4>
+                    </a>
+                    <a className="item" href="/#categories">
+                        <h4>پروژه ها</h4>
+                    </a>
+                    <NavLink className="item" exact to="/" activeClassName="active">
+                        <img src={HomeiCon} />
+                    </NavLink>
                 </div>
             </div>
         </div>

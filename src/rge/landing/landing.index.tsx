@@ -123,14 +123,15 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                         <div className="my-slider">
                             <img src={item.imageurl} alt="imageOne" />
                             <div className="text">
-                                <h2>{item.firstTxt}</h2>
-                                <p>{item.secondTxt}</p>
+                                <div>{item.firstTxt}</div>
+                                <span />
+                                <div>{item.secondTxt}</div>
                             </div>
                         </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <div className="categories">
+            <div id="categories" className="categories">
                 {categoryList?.map((item, index) => (
                     <Link key={index} data-aos="fade" to={RoutePath.projectList(item.id)} className="item">
                         <img src={item.imageurl} alt="دسته بندی" />

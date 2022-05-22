@@ -73,6 +73,7 @@
     height: 70px;
     background-color: #1f1f1f;
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -80,6 +81,7 @@
     > div {
       max-width: $maxWidth;
       display: flex;
+      flex-direction: row-reverse;
       align-items: center;
       justify-content: center;
       width: 100%;
@@ -110,6 +112,10 @@
           font-weight: 400;
           color: #ffffff;
           transition: color 0.3s ease-in-out;
+        }
+        >img{
+          max-width: 32px;
+          max-height: 32px;
         }
 
         transition: background-color 0.3s ease-in-out;

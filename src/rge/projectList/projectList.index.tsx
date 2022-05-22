@@ -32,7 +32,11 @@ const ProjectList: React.FC<ConnectedProps<typeof connector>> = function (props:
     return loading ? (
         <Loading />
     ) : (
-        <div className="rge-project-list-page">
+        <div
+            className={`rge-project-list-page ${
+                id == '1' ? 'orange' : id == '2' ? 'green' : id == '3' ? 'red' : 'purple'
+            }`}
+        >
             <div className="local-header">
                 <div className="my-content">
                     {category?.map((item, index) => (
