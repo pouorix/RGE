@@ -133,7 +133,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
             </Swiper>
             <div id="categories" className="categories">
                 {categoryList?.map((item, index) => (
-                    <Link key={index} data-aos="fade" to={RoutePath.projectList(item.id)} className="item">
+                    <Link key={index} to={RoutePath.projectList(item.id)} className="item">
                         <img src={item.imageurl} alt="دسته بندی" />
                         <div className="text">
                             <h6>{item.title}</h6>

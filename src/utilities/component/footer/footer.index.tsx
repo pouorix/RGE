@@ -2,6 +2,8 @@ import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { ReduxState } from '../../../interface';
 import './footer.style.scss';
+import { Link } from 'react-router-dom';
+import { RoutePath } from '../../../data';
 
 const Footer: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
     return (
@@ -11,33 +13,33 @@ const Footer: React.FC<ConnectedProps<typeof connector>> = function (props: Conn
                     <div className="my-column">
                         <div className="items">
                             <span className="material-icons">arrow_back_ios</span>
-                            <h5>نورپردازی نما</h5>
+                            <Link to={RoutePath.projectList(1)}>نورپردازی نما</Link>
                         </div>
                         <div className="items">
                             <span className="material-icons">arrow_back_ios</span>
-                            <h5>نورپردازی داخلی</h5>
+                            <Link to={RoutePath.projectList(2)}>نورپردازی داخلی</Link>
                         </div>
                         <div className="items">
                             <span className="material-icons">arrow_back_ios</span>
-                            <h5>نور پردازی محوطه و فضای باز</h5>
+                            <Link to={RoutePath.projectList(3)}>نور پردازی محوطه و فضای باز</Link>
                         </div>
                         <div className="items">
                             <span className="material-icons">arrow_back_ios</span>
-                            <h5>نورپردازی مسکونی</h5>
+                            <Link to={RoutePath.projectList(4)}>نورپردازی مسکونی</Link>
                         </div>
                     </div>
                     <div className="my-column">
                         <div className="items">
                             <span className="material-icons">arrow_back_ios</span>
-                            <h5>درباره ما</h5>
+                            <Link to="/#about">درباره ما</Link>
                         </div>
                         <div className="items">
                             <span className="material-icons">arrow_back_ios</span>
-                            <h5>افتخارات</h5>
+                            <Link to="/#award">افتخارات</Link>
                         </div>
                         <div className="items">
                             <span className="material-icons">arrow_back_ios</span>
-                            <h5>تماس با ما</h5>
+                            <Link to="/#contact">تماس با ما</Link>
                         </div>
                         <div className="items">
                             <span className="material-icons">arrow_back_ios</span>
@@ -56,7 +58,7 @@ const Footer: React.FC<ConnectedProps<typeof connector>> = function (props: Conn
             <div className="left">
                 <h2>RGE Lightning Design</h2>
                 <h3>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</h3>
-                <label>Contact Us!</label>
+                <label>! Contact Us</label>
                 <h4>Phone : 989123456789</h4>
                 <h5>Main : info@rge.ir</h5>
                 <div className="social-media">
