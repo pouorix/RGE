@@ -56,6 +56,12 @@ html {
     margin: 32px auto;
     display: flex;
     flex-direction: row;
+    position: relative;
+    .categories-scroll-div{
+      position: absolute;
+
+      top: -200px;
+    }
 
     @include rge-pre-lg {
       flex-direction: column;

@@ -132,7 +132,8 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <div id="categories" className="categories">
+            <div className="categories">
+                <div id="categories" className="categories-scroll-div" />
                 {categoryList?.map((item, index) => (
                     <Link key={index} to={RoutePath.projectList(item.id)} className="item">
                         <img src={item.imageurl} alt="دسته بندی" />
