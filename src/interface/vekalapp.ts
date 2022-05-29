@@ -1,10 +1,14 @@
 export interface __Config {
-    id: number;
-    aboutus: string;
-    countries: number;
-    exprienceYear: number;
-    projectCount: number;
-    projects: number;
+  id: number,
+  email: string,
+  phone: string,
+  address: string,
+  socialMedia: string,
+  aboutus: string,
+  countries: number,
+  exprienceYear: number,
+  projectCount: number,
+  projects: number
 }
 export interface __TopBanner {
     id: number;

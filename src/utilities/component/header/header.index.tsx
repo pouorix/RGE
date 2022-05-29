@@ -19,11 +19,11 @@ const Header: React.FC<ConnectedProps<typeof connector>> = function (props: Conn
                     <span />
                     <div className="info">
                         <div className="item">
-                            <p>info@rge.ir</p>
+                            <p>{props.configData?.email}</p>
                             <i className="cfi cfi-mail" />
                         </div>
                         <div className="item">
-                            <p>09123456789</p>
+                            <p>{props.configData?.phone}</p>
                             <i className="cfi cfi-phone" />
                         </div>
                     </div>
@@ -62,6 +62,7 @@ const Header: React.FC<ConnectedProps<typeof connector>> = function (props: Conn
 const mapStateToProps = (state: ReduxState) => ({
     isAuth: state.authStatus,
     userData: state.userData,
+    configData: state.configData,
 });
 
 const connector = connect(mapStateToProps);

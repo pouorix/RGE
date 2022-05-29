@@ -61,7 +61,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
     });
 
     const [loading, setLoading] = useState<boolean>(true);
-    const [data, setData] = useState<Config>();
+    const [data, setData] = useState<Config | null>(props.configData);
     const [topBanner, setTopBanner] = useState<TopBanner[]>();
     const [categoryList, setCategoryList] = useState<CategoryList[]>();
     const [award, setAward] = useState<Award[]>();
@@ -69,9 +69,12 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
     const [history, setHistory] = useState<History[]>();
     const [historySelected, setHistorySelected] = useState<History>();
     const [blog, setBlog] = useState<BlogListType[]>();
+
+    useEffect(() => {
+        setData(props.configData);
+    }, [props.configData]);
     useEffect(() => {
         const temp = [
-            get<any>(API.landing.config),
             get<any>(API.landing.topBanner),
             get<any>(API.landing.categoryList),
             get<any>(API.landing.award),
@@ -86,19 +89,17 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                 responseValidator(res[2].status) &&
                 responseValidator(res[3].status) &&
                 responseValidator(res[4].status) &&
-                responseValidator(res[5].status) &&
-                responseValidator(res[6].status)
+                responseValidator(res[5].status)
             ) {
-                if (res[0].data) setData(res[0].data);
-                if (res[1].data) setTopBanner(res[1].data);
-                if (res[2].data) setCategoryList(res[2].data);
-                if (res[3].data) setAward(res[3].data);
-                if (res[4].data) setRecentProject(res[4].data);
-                if (res[5].data) {
-                    setHistory(res[5].data);
-                    setHistorySelected(res[5].data[0]);
+                if (res[0].data) setTopBanner(res[0].data);
+                if (res[1].data) setCategoryList(res[1].data);
+                if (res[2].data) setAward(res[2].data);
+                if (res[3].data) setRecentProject(res[3].data);
+                if (res[4].data) {
+                    setHistory(res[4].data);
+                    setHistorySelected(res[4].data[0]);
                 }
-                if (res[6].data) setBlog(res[6].data);
+                if (res[5].data) setBlog(res[5].data);
                 console.log(res);
                 setLoading(false);
             } else toast.error('خطایی رخ داده است.');
@@ -363,28 +364,28 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                             <span className="material-icons">call</span>
                         </div>
                         <h3>تماس با ما</h3>
-                        <p>09123456789</p>
+                        <p>{data?.phone}</p>
                     </div>
                     <div data-aos="fade" className="item">
                         <div className="icon">
                             <span className="material-icons">email</span>
                         </div>
                         <h3>ایمیل</h3>
-                        <p>info@rge.ir</p>
+                        <p>{data?.email}</p>
                     </div>
                     <div data-aos="fade" className="item">
                         <div className="icon">
                             <span className="material-icons">group</span>
                         </div>
                         <h3>شبکه اجتماعی</h3>
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                        <p>{data?.socialMedia}</p>
                     </div>
                     <div data-aos="fade" className="item">
                         <div className="icon">
                             <span className="material-icons">place</span>
                         </div>
                         <h3>آدرس</h3>
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                        <p>{data?.address}</p>
                     </div>
                 </div>
                 <div data-aos="fade" className="map-form">
@@ -415,6 +416,7 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
 const mapStateToProps = (state: ReduxState) => ({
     isAuth: state.authStatus,
     userData: state.userData,
+    configData: state.configData,
 });
 
 const connector = connect(mapStateToProps);

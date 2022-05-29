@@ -16,7 +16,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-height: 600px;
+    max-height: calc(100vh - 110px);
     position: relative;
 
     img {

@@ -3,10 +3,11 @@
   background-color: black;
   //height: 460px;
   width: 100%;
-  padding-top: 48px;
+  
   display: flex;
   align-items: center;
   .right{
+    padding-top: 48px;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -25,10 +26,10 @@
           >span{
             margin-left: 12px;
             color: gold;
-            font-size: 12px;
+            font-size: 16px;
           }
           h5,a{
-            font-size: 16px;
+            font-size: 20px;
             color: white;
             cursor: pointer;
             transition: color 0.3s;
@@ -46,30 +47,33 @@
       align-items: center;
       margin-top: 32px;
       >span{
-        font-size: 32px;
+        font-size: 36px;
         color: red;
       }
       >h3{
-        font-size: 14px;
+        font-size: 18px;
         color: gold;
       }
     }
   }
   .left{
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: rgb(27, 27, 27);
      border-right: solid 2px gold;
-     padding: 0 32px;
+     padding: 48px 32px;
+
     h2{
       color: gold;
-      font-size: 24px;
+      font-size: 30px;
       font-weight: 700;
     }
     h3,label,h4,h5{
       color: white;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 600;
       margin-top: 16px;
     }

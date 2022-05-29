@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ReduxState } from '../interface';
+import { Config, ReduxState } from '../interface';
 import { connect, ConnectedProps } from 'react-redux';
 import Header from '../utilities/component/header/header.index';
 import Landing from './landing/landing.index';
@@ -8,14 +8,23 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/effect-coverflow';
 import Footer from '../utilities/component/footer/footer.index';
-import { RoutePath } from '../data';
+import { API, RoutePath } from '../data';
 import ProjectList from './projectList/projectList.index';
 import ProjectDetail from './projectDetail/projectDetail.index';
 import BlogList from './blogList/blogList.index';
 import BlogDetail from './blogDetail/blogDetail.index';
 import ScrollToTopLocal from './scrollToTop';
 import ScrollToTop from 'react-scroll-to-top';
+import { get, responseValidator } from '../scripts/api';
+import { setConfigData } from '../redux/actions';
 const Rge: React.FC<ConnectedProps<typeof connector>> = function (props: ConnectedProps<typeof connector>) {
+    useEffect(() => {
+        get<Config>(API.landing.config).then((res) => {
+            if (responseValidator(res.status)) {
+                props.dispatch(setConfigData(res.data));
+            }
+        });
+    }, []);
     return (
         <Router>
             <ScrollToTop
