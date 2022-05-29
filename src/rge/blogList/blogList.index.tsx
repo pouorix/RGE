@@ -36,7 +36,7 @@ const BlogList: React.FC<ConnectedProps<typeof connector>> = function (props: Co
                     ))}
                 </div>
             </div>
-            <PaginationComponent currentPage={1} pageCount={10} isShowArrow={false} onChange={(e) => console.log(e)} />
+            {/* <PaginationComponent currentPage={1} pageCount={10} isShowArrow={false} onChange={(e) => console.log(e)} /> */}
         </div>
     );
 };

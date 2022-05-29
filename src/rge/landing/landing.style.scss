@@ -404,11 +404,34 @@ html {
       margin: 32px 0;
 
       .list {
+        width: 400px;
         @include rge-xl {
           margin-left: 64px;
         }
         display: flex;
         flex-direction: column;
+        .history-iterable-item{
+          width: fit-content;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          margin-bottom: 24px;
+          
+          h4{
+            min-width: 100px;
+            background-color: gainsboro;
+            padding: 12px;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            transition: box-shadow 0.6s;
+            &:hover{
+              box-shadow: rgb(107, 91, 0) 0px 5px 15px;
+            }
+          }
+          span{
+            margin-right: 12px;
+          }
+        }
         @include rge-pre-xl {
           width: 100%;
           margin-bottom: 64px;
@@ -444,7 +467,7 @@ html {
 
         img {
           width: 100%;
-          max-width: 600px;
+          max-width: 400px;
           height: 400px;
           object-fit: cover;
           border-radius: 5px;
@@ -452,7 +475,7 @@ html {
 
         .text {
           @include rge-xl {
-            margin-right: 28px;
+            margin-left: 32px;
           }
           @include rge-pre-xl {
             margin-top: 32px;
@@ -462,9 +485,10 @@ html {
           h4 {
             //text-align: center;
             margin-bottom: 16px;
-            @include rge-size(font-size, 18px, 16px);
+            @include rge-size(font-size, 16px, 14px);
+            font-weight: 400;
             //font-size: 18px;
-            color: $black2;
+            color: $black3;
           }
 
           p {
@@ -472,6 +496,7 @@ html {
             @include rge-size(font-size, 16px, 14px);
             //font-size: 16px;
             color: $black3;
+            font-weight: 400;
           }
         }
       }

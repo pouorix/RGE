@@ -12,8 +12,8 @@ const BlogListCard: React.FC<{ data: BlogListType }> = function (props: { data: 
                 <img src={props.data.thumbnailimg} alt="blogs" />
                 <div className="sub-info">
                     <h4>{props.data.title}</h4>
-                    <h6>لورم ایپسوم متن ساختگی</h6>
-                    <h6>لورم ایپسوم متن ساختگی</h6>
+                    <h6>{props.data.firstPreviewText}</h6>
+                    <h6>{props.data.secondPreviewText}</h6>
                 </div>
             </div>
 

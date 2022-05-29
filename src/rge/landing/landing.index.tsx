@@ -282,21 +282,23 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                 <div className="history-content">
                     <div className="list">
                         {history?.map((item, index) => (
-                            <img
+                            <div
+                                data-aos="fade"
                                 onClick={() => setHistorySelected(item)}
                                 key={index}
-                                data-aos="fade"
-                                src={item.image}
-                                alt="history"
-                            />
+                                className="history-iterable-item"
+                            >
+                                <h4>{item.title ? item.title : 'بدون عنوان'}</h4>
+                                <span className="material-icons">arrow_back_ios</span>
+                            </div>
                         ))}
                     </div>
                     <div className="my-content">
-                        <img src={historySelected?.image} alt="history" />
                         <div className="text">
-                            <h4>{historySelected?.firsttxt}</h4>
+                            <p>{historySelected?.firsttxt}</p>
                             <p>{historySelected?.secondtxt}</p>
                         </div>
+                        <img src={historySelected?.image} alt="history" />
                     </div>
                 </div>
             </div>

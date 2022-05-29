@@ -34,7 +34,7 @@ const ProjectList: React.FC<ConnectedProps<typeof connector>> = function (props:
     ) : (
         <div
             className={`rge-project-list-page ${
-                id == '1' ? 'orange' : id == '2' ? 'green' : id == '3' ? 'red' : 'purple'
+                id == '1' ? 'blue' : id == '2' ? 'orange' : id == '3' ? 'green' : 'purple'
             }`}
         >
             <div className="local-header">

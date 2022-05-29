@@ -1,14 +1,14 @@
 export interface __Config {
-  id: number,
-  email: string,
-  phone: string,
-  address: string,
-  socialMedia: string,
-  aboutus: string,
-  countries: number,
-  exprienceYear: number,
-  projectCount: number,
-  projects: number
+    id: number;
+    email: string;
+    phone: string;
+    address: string;
+    socialMedia: string;
+    aboutus: string;
+    countries: number;
+    exprienceYear: number;
+    projectCount: number;
+    projects: number;
 }
 export interface __TopBanner {
     id: number;
@@ -65,6 +65,7 @@ export interface __History {
     firsttxt: string;
     secondtxt: string;
     enable: boolean;
+    title: string | null;
 }
 export interface __BlogList {
     eighthimg: string;
@@ -87,6 +88,8 @@ export interface __BlogList {
     sixthimg: string;
     sixthtxt: string;
     tenthimg: string;
+    firstPreviewText: string;
+    secondPreviewText: string;
     tenthtxt: string;
     thirdimg: string;
     thirdtxt: string;
