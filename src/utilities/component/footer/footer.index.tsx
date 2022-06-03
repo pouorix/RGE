@@ -56,7 +56,10 @@ const Footer: React.FC<ConnectedProps<typeof connector>> = function (props: Conn
                 </div>
             </div>
             <div className="left">
-                <h2>RGE Lightning Design</h2>
+                <div className="rgetxt">
+                    <h2>RGE</h2>
+                    <h1>Lightning Design</h1>
+                </div>
                 <h3>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</h3>
                 <label>! Contact Us</label>
                 <h4>Phone : 989123456789</h4>

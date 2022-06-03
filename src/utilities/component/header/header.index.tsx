@@ -50,7 +50,7 @@ const Header: React.FC<ConnectedProps<typeof connector>> = function (props: Conn
                     <a className="item" href="/#categories">
                         <h4>پروژه ها</h4>
                     </a>
-                    <NavLink className="item" exact to="/" activeClassName="active">
+                    <NavLink className="item home" exact to="/">
                         <img src={HomeiCon} />
                     </NavLink>
                 </div>

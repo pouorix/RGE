@@ -124,9 +124,9 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                         <div className="my-slider">
                             <img src={item.imageurl} alt="imageOne" />
                             <div className="text">
-                                <div>{item.firstTxt}</div>
+                                <div dangerouslySetInnerHTML={{ __html: item.firstTxt }}></div>
                                 <span />
-                                <div>{item.secondTxt}</div>
+                                <div dangerouslySetInnerHTML={{ __html: item.secondTxt }}></div>
                             </div>
                         </div>
                     </SwiperSlide>
