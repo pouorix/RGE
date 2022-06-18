@@ -15,7 +15,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, EffectCoverflow } from 'swiper';
 import Mapir from 'mapir-react-component';
 import 'mapir-react-component/dist/index.css';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, useParams } from 'react-router-dom';
 import { API, RoutePath } from '../../data';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -69,7 +69,6 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
     const [history, setHistory] = useState<History[]>();
     const [historySelected, setHistorySelected] = useState<History>();
     const [blog, setBlog] = useState<BlogListType[]>();
-
     useEffect(() => {
         setData(props.configData);
     }, [props.configData]);
@@ -100,8 +99,44 @@ const Landing: React.FC<ConnectedProps<typeof connector>> = function (props: Con
                     setHistorySelected(res[4].data[0]);
                 }
                 if (res[5].data) setBlog(res[5].data);
-                console.log(res);
+                // console.log(res);
                 setLoading(false);
+                switch (window.location.hash.split('#')[1]) {
+                    case 'award': {
+                        window.scrollTo({
+                            top: 1000,
+                            behavior: 'smooth',
+                        });
+                        break;
+                    }
+                    case 'categories': {
+                        window.scrollTo({
+                            top: 500,
+                            behavior: 'smooth',
+                        });
+                        break;
+                    }
+                    case 'about': {
+                        window.scrollTo({
+                            top: 3400,
+                            behavior: 'smooth',
+                        });
+                        break;
+                    }
+                    case 'contact': {
+                        window.scrollTo({
+                            top: 4300,
+                            behavior: 'smooth',
+                        });
+                        break;
+                    }
+                    default: {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth',
+                        });
+                    }
+                }
             } else toast.error('خطایی رخ داده است.');
         });
     }, []);
